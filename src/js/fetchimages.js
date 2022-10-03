@@ -1,5 +1,4 @@
 const fetchImages = async (parameters, page, query) => {
-  page += 1;
   console.log(query);
   parameters.set('page', page);
   parameters.set('q', query.replace(' ', '+'));
