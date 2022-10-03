@@ -11,6 +11,7 @@ let pageNumber = 1;
 let pageCount = 1;
 loadMoreBtn.style.display = 'none';
 let maxPages = 1;
+let marckup = '';
 
 const searchParams = new URLSearchParams({
   key: '30336513-f1d3dcf5d3b6560ebccde30e0',
@@ -29,7 +30,7 @@ searchForm.addEventListener('submit', e => {
   fetchImages(searchParams, pageNumber, searchQuery.value)
     .then(images => {
       maxPages = images.totalHits / images.hits.length;
-      let marckup = '';
+      marckup = '';
       createMarckup(images, marckup, pageCount);
     })
     .catch(error => console.log(error));
