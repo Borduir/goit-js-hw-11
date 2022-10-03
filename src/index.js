@@ -29,7 +29,7 @@ searchForm.addEventListener('submit', e => {
   fetchImages(searchParams, pageNumber, searchQuery.value)
     .then(images => {
       maxPages = images.totalHits / images.hits.length;
-      marckup = '';
+      let marckup = '';
       createMarckup(images, marckup, pageCount);
     })
     .catch(error => console.log(error));
