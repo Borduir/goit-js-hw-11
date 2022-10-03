@@ -1,8 +1,6 @@
 const fetchImages = async (parameters, page, query) => {
-  console.log(query);
   parameters.set('page', page);
   parameters.set('q', query.replace(' ', '+'));
-  console.log(parameters.toString());
   const response = await fetch(
     `https://pixabay.com/api/?${parameters.toString()}`
   );

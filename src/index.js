@@ -29,12 +29,19 @@ searchForm.addEventListener('submit', e => {
   pageCount = 1;
   fetchImages(searchParams, pageNumber, searchQuery.value)
     .then(images => {
-      maxPages = images.totalHits / images.hits.length;
-      marckup = '';
-      createMarckup(images, marckup, pageCount);
+      if (images.totalHits !== 0) {
+        maxPages = images.totalHits / images.hits.length;
+        marckup = '';
+        createMarckup(images, marckup, pageCount);
+        loadMoreBtn.style.display = 'flex';
+      } else {
+        loadMoreBtn.style.display = 'none';
+        alert(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
+      }
     })
-    .catch(error => console.log(error));
-  loadMoreBtn.style.display = 'flex';
+    .catch(error => alert(error));
 });
 
 //LOAD MORE IMAGES
@@ -48,9 +55,9 @@ loadMoreBtn.addEventListener('click', () => {
     .then(images => {
       if (pageCount === Math.ceil(maxPages)) {
         loadMoreBtn.style.display = 'none';
+        alert("We're sorry, but you've reached the end of search results.");
       }
-      console.log(pageCount, images.totalHits / images.hits.length);
       createMarckup(images, marckup, pageCount);
     })
-    .catch(error => console.log(error));
+    .catch(error => alert(error));
 });
