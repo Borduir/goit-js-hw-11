@@ -29,7 +29,8 @@ searchForm.addEventListener('submit', e => {
   fetchImages(searchParams, pageNumber, searchQuery.value)
     .then(images => {
       maxPages = images.totalHits / images.hits.length;
-      createMarckup(images);
+      marckup = '';
+      createMarckup(images, marckup, pageCount);
     })
     .catch(error => console.log(error));
   loadMoreBtn.style.display = 'flex';
@@ -48,7 +49,7 @@ loadMoreBtn.addEventListener('click', () => {
         loadMoreBtn.style.display = 'none';
       }
       console.log(pageCount, images.totalHits / images.hits.length);
-      createMarckup(images);
+      createMarckup(images, marckup, pageCount);
     })
     .catch(error => console.log(error));
 });
