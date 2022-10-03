@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,19 +8,6 @@
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <header class="page-header">
-      <form class="search-form" id="search-form">
-        <input
-          type="text"
-          name="searchQuery"
-          autocomplete="off"
-          placeholder="Search images..."
-        />
-        <button type="submit">Search</button>
-      </form>
-    </header>
-    <main class="page-main">
-      <section class="main__gallery-section"></section>
-    </main>
+    <include src="./partials/img-search.html"></include>
   </body>
 </html>
